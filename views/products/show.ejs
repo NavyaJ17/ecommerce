@@ -1,0 +1,52 @@
+<%-include('../partials/header')%>
+<%-include('../partials/navbar')%>
+<%-include('../partials/flash')%>
+
+    <h1 class="mt"> <%= product.title %> </h1>
+    <img src="<%= product.image %>" alt="img">
+    <h2> $<%= product.price %> </h2>
+    <h3> <%= product.category %> </h3>
+    <h4> <%= product.description %> </h4>
+
+    <% if(currentUser && currentUser.role == "seller"){ %>
+        <a href= <%= `/products/${product._id}/edit` %>> Edit</a>
+        <form action= <%= `/products/${product._id}?_method=DELETE` %> method="POST">
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+    <% } %>
+    
+
+    <h1>Reviews</h1>
+    <form action="/products/<%= product._id %>" method="POST">
+        <label for="rating">Rating</label>
+        <fieldset class="starability-fade">
+            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+
+        <label for="comment">Comment</label>
+        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+        
+        <button type="submit">Add Review</button>
+    </form>
+
+    <% for(let review of product.reviews){ %>
+        <h4 class="starability-result" data-rating="3">
+          Rated: <%= review.rating %> stars
+        </h4>
+        <h4><%= review.comment %></h4>
+        <% if(review.createdAt){ %>
+            <h6><%= review.createdAt.toDateString() %></h6>
+        <% } %>
+    <% } %>
+
+<%-include('../partials/footer')%>

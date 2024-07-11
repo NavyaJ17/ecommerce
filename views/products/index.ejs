@@ -1,0 +1,40 @@
+<%-include('../partials/header')%>
+<%-include('../partials/navbar')%>
+<%-include('../partials/flash')%>
+
+<!-- <h1>Featured Products</h1> -->
+
+<div class="row g-0  mt">
+    <% for(let item of products){ %>
+        <div class="card" style="width: 18rem;">
+            <a href="/products/<%= item._id %>" class="col">
+                <div style="background-color: #eceff1; border-radius: 12px 12px 0 0;">
+                    <img src="<%= item.image %>" class="card-img-top" alt="img">
+                </div>
+            </a>
+            <div class="card-body">
+                <h5 class="card-title text-truncate">
+                    <a href="/products/<%= item._id %>" class="col title"><%= item.title %></a>
+                    <span class="like-btn" product-id="<%= item._id %>">
+
+                        <% if(currentUser && currentUser.wishlist.includes(item._id)){ %>
+                            <i class="fa-solid fa-heart"></i>
+                        <% } else{ %>
+                            <i class="fa-regular fa-heart"></i>
+                        <% } %>
+
+                    </span>
+                </h5>
+                <p class="card-text"><%= item.category %></p>
+                <p class="card-price">$<%= item.price %></p>
+                <form action="/user/<%= item._id %>/add" method="POST">
+                    <button type="submit" class="btn btn-primary">Add to cart</button>
+                </form>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<script src="/js/app.js"></script>
+
+<%-include('../partials/footer')%>
