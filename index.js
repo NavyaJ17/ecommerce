@@ -36,7 +36,7 @@ app.use(methodOverride("_method"));
 // seedDB();
 
 let configSession = {
-  secret: "keyboard cat",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
