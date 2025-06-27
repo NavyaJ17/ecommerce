@@ -7,13 +7,13 @@ This application enables users to browse products, manage shopping carts, leave 
 
 ## 📌 Features
 
-- 🛍️ Product listing, detail, and review pages
-- 📃 User authentication (Signup & Login)
-- 🛒 Add to cart and checkout simulation
-- ⭐ Wishlist management
-- 📝 Add and view product reviews
-- 📑 Flash messages for user actions
-- 📱 Responsive layout using EJS partials and custom CSS
+- Product listing, detail, and review pages
+- User authentication (Signup & Login)
+- Add to cart and checkout simulation
+- Wishlist management
+- Add and view product reviews
+- Flash messages for user actions
+- Responsive layout using EJS partials and custom CSS
 
 ---
 
@@ -87,7 +87,7 @@ Check out the deployed project here:
 
 ## 📃 License
 
-This project is licensed under the **MIT License** — feel free to use and modify it for your own educational or commercial projects.
+This project is licensed under the **MIT License**.
 
 ## 👩‍💻 Author
 
